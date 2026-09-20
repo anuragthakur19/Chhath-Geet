@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Chhath Geet — Songs of the Sun</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Tiro+Devanagari+Hindi&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #fff8d6;
+            --card: #fffdf0;
+            --ink: #4a1208;
+            --mut: #8a4a2a;
+            --acc: #dc2626;
+            --acc2: #f59e0b;
+            --line: #f6d365;
+            box-sizing: border-box;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px)
+        }
+
+        @media (prefers-color-scheme:dark) {
+            :root:not([data-theme="light"]) {
+                --bg: #2a0d06;
+                --card: #3b140a;
+                --ink: #ffedc2;
+                --mut: #e0b48a;
+                --acc: #ea580c;
+                --acc2: #fbbf24;
+                --line: #7a3413
+            }
+        }
+
+        :root[data-theme="dark"] {
+            --bg: #2a0d06;
+            --card: #3b140a;
+            --ink: #ffedc2;
+            --mut: #e0b48a;
+            --acc: #ea580c;
+            --acc2: #fbbf24;
+            --line: #7a3413
+        }
+
+        html {
+            scroll-padding-top: env(safe-area-inset-top, 0px)
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.6
+        }
+
+        h1,
+        h2,
+        h3,
+        .brand {
+            font-family: 'Fraunces', Georgia, serif;
+            line-height: 1.2
+        }
+
+        .hi {
+            font-family: 'Tiro Devanagari Hindi', 'Noto Serif Devanagari', serif
+        }
+
+        header {
+            position: sticky;
+            top: env(safe-area-inset-top, 0px);
+            z-index: 5;
+            background: var(--bg);
+            border-bottom: 1px solid var(--line)
+        }
+
+        .bar {
+            max-width: 1000px;
+            margin: auto;
+            padding: 10px 16px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap
+        }
+
+        .brand {
+            font-weight: 700;
+            font-size: 1.15rem
+        }
+
+        .brand small {
+            display: block;
+            font: 0.7rem Georgia, serif;
+            color: var(--mut)
+        }
+
+        nav {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+            margin-left: auto
+        }
+
+        nav a {
+            padding: 6px 12px;
+            border-radius: 99px;
+            color: var(--mut);
+            text-decoration: none;
+            font-size: .9rem
+        }
+
+        nav a.on {
+            background: var(--acc);
+            color: #fff
+        }
+
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 24px 16px 60px
+        }
+
+        .hero {
+            border-radius: 22px;
+            padding: 44px 28px;
+            color: #fff;
+            background: linear-gradient(160deg, #991b1b 0%, #dc2626 30%, #f97316 65%, #facc15 100%);
+            position: relative;
+            overflow: hidden
+        }
+
+        .hero:after {
+            content: "";
+            position: absolute;
+            right: -60px;
+            top: -60px;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: radial-gradient(#fde68a, #fbbf2400 70%)
+        }
+
+        .hero h1 {
+            font-size: clamp(1.7rem, 5vw, 2.8rem);
+            margin: 6px 0 10px;
+            max-width: 640px
+        }
+
+        .hero p {
+            max-width: 560px;
+            opacity: .95
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 18px;
+            border-radius: 99px;
+            border: 0;
+            background: #fff;
+            color: #7c2d12;
+            font: 600 .95rem Georgia, serif;
+            text-decoration: none;
+            cursor: pointer;
+            margin: 6px 8px 0 0
+        }
+
+        .btn.o {
+            background: transparent;
+            color: #fff;
+            border: 1px solid #ffffffaa
+        }
+
+        .btn.s {
+            background: var(--acc);
+            color: #fff
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin: 36px 0 4px
+        }
+
+        .sub {
+            color: var(--mut);
+            margin: 0 0 16px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 14px
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 16px
+        }
+
+        .day {
+            font-size: .75rem;
+            color: var(--acc);
+            letter-spacing: .08em;
+            text-transform: uppercase
+        }
+
+        .card h3 {
+            margin: 4px 0
+        }
+
+        .card p {
+            margin: 4px 0;
+            color: var(--mut);
+            font-size: .95rem
+        }
+
+        .song {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 10px 12px;
+            text-decoration: none;
+            color: inherit
+        }
+
+        .song {
+            width: 100%;
+            text-align: left;
+            font: inherit;
+            cursor: pointer
+        }
+
+        .song:hover,
+        .song.now {
+            border-color: var(--acc)
+        }
+
+        .song.now {
+            background: color-mix(in srgb, var(--acc) 10%, var(--card))
+        }
+
+        .paint {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 18px;
+            border: 1px solid var(--line)
+        }
+
+        .cap {
+            font-size: .85rem;
+            color: var(--mut);
+            margin: 6px 2px
+        }
+
+        .stage {
+            position: relative;
+            overflow: hidden;
+            border-radius: 22px;
+            padding: 34px 12px;
+            min-height: 420px;
+            display: grid;
+            place-items: center;
+            background: radial-gradient(circle at 50% 45%, #fde047, #f97316 55%, #991b1b)
+        }
+
+        .rays {
+            position: absolute;
+            inset: -60%;
+            background: repeating-conic-gradient(#ffffff2e 0 6deg, transparent 6deg 15deg);
+            animation: sp1 90s linear infinite
+        }
+
+        .mand {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%)
+        }
+
+        .m1 {
+            width: min(760px, 150%);
+            opacity: .6;
+            animation: sp2 70s linear infinite
+        }
+
+        .m2 {
+            width: min(440px, 85%);
+            opacity: .85;
+            animation: sp2 45s linear infinite reverse
+        }
+
+        .sparks {
+            position: absolute;
+            inset: 0;
+            pointer-events: none
+        }
+
+        .sp {
+            position: absolute;
+            bottom: -10px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #fde047;
+            box-shadow: 0 0 12px #f59e0b;
+            animation: rise 8s linear infinite
+        }
+
+        .screen {
+            position: relative;
+            z-index: 2;
+            width: min(720px, 100%);
+            aspect-ratio: 16/9;
+            border-radius: 16px;
+            border: 4px solid #fde047;
+            box-shadow: 0 0 0 4px #b91c1c, 0 12px 40px #0009;
+            background: #000;
+            overflow: hidden
+        }
+
+        .stage.live .screen {
+            animation: glow 3s ease-in-out infinite alternate
+        }
+
+        #frameBox,
+        #frameBox iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block
+        }
+
+        .idle {
+            height: 100%;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            padding: 20px;
+            color: #fff7d6;
+            background: #3b0d06
+        }
+
+        @keyframes sp1 {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        @keyframes sp2 {
+            from {
+                transform: translate(-50%, -50%) rotate(0)
+            }
+
+            to {
+                transform: translate(-50%, -50%) rotate(360deg)
+            }
+        }
+
+        @keyframes rise {
+            from {
+                bottom: -10px;
+                opacity: 1
+            }
+
+            to {
+                bottom: 100%;
+                opacity: 0
+            }
+        }
+
+        @keyframes glow {
+            to {
+                box-shadow: 0 0 0 4px #b91c1c, 0 0 46px 8px #fde047
+            }
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+
+            .rays,
+            .mand,
+            .sp,
+            .screen {
+                animation: none !important
+            }
+        }
+
+        .pm {
+            margin: 14px 2px 4px
+        }
+
+        .pm span {
+            color: var(--mut)
+        }
+
+        .pc {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+            margin: 8px 0 4px
+        }
+
+        .pc button,
+        .pc a,
+        .pc label {
+            padding: 7px 14px;
+            border-radius: 99px;
+            border: 1px solid var(--line);
+            background: var(--card);
+            color: var(--ink);
+            font: inherit;
+            font-size: .88rem;
+            cursor: pointer;
+            text-decoration: none
+        }
+
+        .pc a {
+            color: var(--mut)
+        }
+
+        .thumb {
+            flex: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            font-size: 1rem
+        }
+
+        .song b {
+            display: block;
+            font-weight: 600
+        }
+
+        .song span {
+            color: var(--mut);
+            font-size: .85rem
+        }
+
+        .list {
+            display: grid;
+            gap: 8px
+        }
+
+        .tools {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 10px 0
+        }
+
+        input,
+        select {
+            padding: 9px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--line);
+            background: var(--card);
+            color: var(--ink);
+            font: inherit;
+            min-width: 0
+        }
+
+        input {
+            flex: 1 1 200px
+        }
+
+        .chips {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin: 8px 0 14px
+        }
+
+        .chip {
+            padding: 6px 14px;
+            border-radius: 99px;
+            border: 1px solid var(--line);
+            background: var(--card);
+            color: var(--ink);
+            cursor: pointer;
+            font: inherit;
+            font-size: .88rem
+        }
+
+        .chip.on {
+            background: var(--acc);
+            border-color: var(--acc);
+            color: #fff
+        }
+
+        .steps {
+            counter-reset: s;
+            padding: 0;
+            list-style: none
+        }
+
+        .steps li {
+            counter-increment: s;
+            padding-left: 38px;
+            position: relative;
+            margin: 8px 0
+        }
+
+        .steps li:before {
+            content: counter(s);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--acc);
+            color: #fff;
+            display: grid;
+            place-items: center;
+            font-size: .85rem
+        }
+
+        .note {
+            font-size: .85rem;
+            color: var(--mut);
+            border-top: 1px solid var(--line);
+            margin-top: 40px;
+            padding-top: 14px
+        }
+
+        .page {
+            display: none
+        }
+
+        .page.on {
+            display: block
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="bar">
+            <div class="brand">Chhath Geet<small>Songs of the Sun</small></div>
+            <nav id="nav">
+                <a href="#home">Home</a><a href="#player">Player</a><a href="#songs">Songs</a><a href="#rituals">Four
+                    Days</a><a href="#about">About</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+
+        <section class="page" id="home">
+            <div class="hero">
+                <div class="hi">छठी मईया के गीत</div>
+                <h1>The songs that carry Chhath from the kitchen to the ghat</h1>
+                <p>Chhath Puja songs all in one place.</p>
+                <a class="btn" href="#songs">Listen to Chhath geet</a><a class="btn o" href="#rituals">The four days</a>
+            </div>
+            <h2>Chhath in Mithila art</h2>
+            <p class="sub">Maithli Art Illustration of Chhath Puja.</p>
+            <svg class="paint" viewBox="0 0 800 470" role="img"
+                aria-label="Mithila-style painting of devotees standing in a river and worshipping the sun">
+                <defs>
+                    <linearGradient id="sk" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="#fef08a" />
+                        <stop offset="1" stop-color="#fdba74" />
+                    </linearGradient>
+                    <g id="fg">
+                        <path d="M-26 0L-14-70Q0-80 14-70L26 0Z" fill="currentColor" stroke="#2b0a04"
+                            stroke-width="3" />
+                        <path d="M-14-70L-24-114M14-70L24-114" stroke="#2b0a04" stroke-width="5"
+                            stroke-linecap="round" />
+                        <circle cy="-88" r="13" fill="#fde2b8" stroke="#2b0a04" stroke-width="3" />
+                        <path d="M-13-90Q0-106 13-90Q0-96-13-90Z" fill="#2b0a04" />
+                        <path d="M-10-88Q-5-93 0-88Q-5-83-10-88ZM0-88Q5-93 10-88Q5-83 0-88Z" fill="#fff"
+                            stroke="#2b0a04" stroke-width="1.3" />
+                        <circle cx="-5" cy="-88" r="1.6" fill="#2b0a04" />
+                        <circle cx="5" cy="-88" r="1.6" fill="#2b0a04" />
+                        <path d="M-34-122H34L26-112H-26Z" fill="#facc15" stroke="#2b0a04" stroke-width="2.5" />
+                        <circle cx="-24" cy="-117" r="4" fill="#fde2b8" stroke="#2b0a04" stroke-width="2" />
+                        <circle cx="24" cy="-117" r="4" fill="#fde2b8" stroke="#2b0a04" stroke-width="2" />
+                        <path d="M0-124Q-6-134 0-144Q6-134 0-124Z" fill="#f97316" stroke="#7f1d1d" stroke-width="1.5" />
+                    </g>
+                    <g id="fs">
+                        <path d="M-16 0Q0-14 16 0Q0 14-16 0ZM16 0L28-10V10Z" fill="#facc15" stroke="#2b0a04"
+                            stroke-width="2.5" />
+                        <circle cx="-8" cy="-2" r="2.5" fill="#2b0a04" />
+                    </g>
+                    <g id="bn">
+                        <path d="M0 0V-56" stroke="#2b0a04" stroke-width="5" />
+                        <g fill="#16a34a" stroke="#2b0a04" stroke-width="2">
+                            <ellipse cx="-26" cy="-58" rx="27" ry="8" transform="rotate(-20 -26 -58)" />
+                            <ellipse cx="26" cy="-58" rx="27" ry="8" transform="rotate(20 26 -58)" />
+                            <ellipse cx="-14" cy="-74" rx="22" ry="7" transform="rotate(-55 -14 -74)" />
+                            <ellipse cx="14" cy="-74" rx="22" ry="7" transform="rotate(55 14 -74)" />
+                        </g>
+                    </g>
+                    <path id="wv"
+                        d="M0 0Q25-12 50 0T100 0T150 0T200 0T250 0T300 0T350 0T400 0T450 0T500 0T550 0T600 0T650 0T700 0T750 0T800 0"
+                        fill="none" />
+                </defs>
+                <rect width="800" height="470" fill="#b91c1c" />
+                <rect x="12" y="12" width="776" height="446" fill="url(#sk)" stroke="#2b0a04" stroke-width="4" />
+                <rect x="22" y="22" width="756" height="426" fill="none" stroke="#dc2626" stroke-width="7"
+                    stroke-dasharray="2 13" stroke-linecap="round" />
+                <g transform="translate(400 130)">
+                    <circle r="122" fill="none" stroke="#f97316" stroke-width="12" stroke-dasharray="6 18.9" />
+                    <circle r="92" fill="none" stroke="#dc2626" stroke-width="20" stroke-dasharray="14 10.1" />
+                    <circle r="76" fill="#f97316" stroke="#7f1d1d" stroke-width="4" />
+                    <circle r="56" fill="#facc15" stroke="#7f1d1d" stroke-width="3" />
+                    <circle r="36" fill="#ea580c" stroke="#7f1d1d" stroke-width="3" />
+                    <circle r="14" fill="#7f1d1d" />
+                </g>
+                <path d="M12 250Q100 250 180 340L12 346Z" fill="#65a30d" stroke="#2b0a04" stroke-width="3" />
+                <path d="M788 250Q700 250 620 340L788 346Z" fill="#65a30d" stroke="#2b0a04" stroke-width="3" />
+                <use href="#bn" x="52" y="300" />
+                <use href="#bn" x="100" y="318" />
+                <use href="#bn" x="748" y="300" />
+                <use href="#bn" x="700" y="318" />
+                <use href="#fg" x="150" y="365" style="color:#dc2626" />
+                <use href="#fg" x="240" y="372" style="color:#15803d" />
+                <use href="#fg" x="325" y="365" style="color:#ea580c" />
+                <use href="#fg" x="475" y="365" style="color:#1d4ed8" />
+                <use href="#fg" x="560" y="372" style="color:#b91c1c" />
+                <use href="#fg" x="650" y="365" style="color:#15803d" />
+                <path d="M12 346Q100 330 200 346T400 346T600 346T788 346V446H12Z" fill="#0ea5e9" opacity=".92"
+                    stroke="#2b0a04" stroke-width="3" />
+                <g fill="none" stroke="#fff" stroke-width="3" opacity=".9">
+                    <use href="#wv" y="368" />
+                    <use href="#wv" y="398" x="-20" />
+                    <use href="#wv" y="428" x="-10" />
+                </g>
+                <use href="#fs" x="120" y="412" />
+                <use href="#fs" x="330" y="440" />
+                <use href="#fs" x="470" y="412" transform="translate(940 0) scale(-1 1)" />
+                <use href="#fs" x="690" y="440" transform="translate(1380 0) scale(-1 1)" />
+            </svg>
+            <p class="cap">An original illustration in the Mithila (Madhubani) style: bold outlines, flat colour, fish
+                and sun motifs.</p>
+            <h2>Chhath in four days</h2>
+            <p class="sub">Nahay Khay to Usha Argh, the whole vrat in order.</p>
+            <div class="grid" id="daysMini"></div>
+            <h2>Featured Chhath geet</h2>
+            <p class="sub">Four songs no Chhath is complete without.</p>
+            <div class="list" id="featured"></div>
+            <p><a class="btn s" href="#songs" id="seeAll"></a></p>
+            <h2>Why Chhath matters</h2>
+            <p>Chhath asks for no priest and no temple. Only clean water, a bamboo soop, and a song sung facing the sun.
+            </p>
+        </section>
+
+        <section class="page" id="player">
+            <h1>Player</h1>
+            <div class="stage" id="stage">
+                <div class="rays"></div>
+                <div class="mand m1"></div>
+                <div class="mand m2"></div>
+                <div class="sparks" id="sparks"></div>
+                <div class="screen">
+                    <div id="frameBox">
+                        <div class="idle">
+                            <div>
+                                <p>Pick a geet from Songs, or start from the top.</p><button class="btn s"
+                                    id="playAll">▶ Play all geet</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pm"><span>Now playing</span> <b id="pt">Nothing yet</b> <span id="pa"></span></div>
+            <div class="pc"><button id="prev">⏮ Prev</button><button id="next">Next ⏭</button><label><input
+                        type="checkbox" id="auto" checked> Autonext</label><a id="yt" target="_blank" rel="noopener"
+                    href="https://www.youtube.com/">Video error? Watch on YouTube</a></div>
+            <h2>Up next</h2>
+            <div class="list" id="ql"></div>
+        </section>
+
+        <section class="page" id="songs">
+            <h1>Song library</h1>
+            <p class="sub" id="count"></p>
+            <div class="chips" id="chips"></div>
+            <div class="tools">
+                <input id="q" type="search" placeholder="Search song or artist">
+                <select id="artist"></select>
+                <button class="chip s" id="shuffle">Play a random geet</button>
+            </div>
+            <div class="list" id="all"></div>
+        </section>
+
+        <section class="page" id="rituals">
+            <h1>The four days of Chhath</h1>
+            <p class="sub">Observed in Kartik (and again in Chaitra), from Chaturthi to Saptami of the bright fortnight.
+            </p>
+            <div class="grid" id="days"></div>
+        </section>
+
+        <section class="page" id="about">
+            <h1>About Chhath</h1>
+            <p>Chhath Puja is a four-day festival of the sun god Surya and Chhathi Maiya, celebrated widely in Bihar,
+                Jharkhand, eastern Uttar Pradesh, Nepal's Terai and by diaspora families around the world. Devotees
+                fast, bathe in rivers or ponds, and offer arghya to the setting and rising sun.</p>
+            <p>Its songs are a large part of its character. Many are folk geet passed down by women through generations,
+                and they are sung during cooking, walking to the ghat, and standing in the water.</p>
+
+        </section>
+
+
+    </main>
+
+    <script>
+        var RAW = `6e6Hp6R5SVU|Uga Hai Suraj Dev|Anuradha Paudwal
+054aYEl728U|Rovele Banjhiniya|Akshara Singh
+BKoD7bTLc2k|Jode Jode Falwa|Pawan Singh
+fCuHD3YBQKY|Chhath Ghate Chali|Khesari Lal Yadav & Antra Singh Priyanka
+wXv2MyuVOZQ|Chahi Na Ann Dhan Khajanwa|Arvind Akela Kallu
+aLbXQ9VIxKI|Chhath Mai Ke Baratiya|Khesari Lal Yadav
+Eyq7vfxu4iA|Kaanch Hi Baans Ke Bahangiya|Anuradha Paudwal
+knZ8b5YnQiY|Kelwa Ke Paat Par|Sharda Sinha
+fj4foPjRzTk|Sonu Hamra Pe Bharosa Naikhe|Khesari Lal Yadav
+lnj52n6k9-A|Ghare Ghare Hota Chhathi Mai Ke Baratiya|Aamrapali Dubey
+7R9tDvnAfMo|Kaanch Hi Baans Ke Bahangiya (Aragh Dehab)|Arvind Akela Kallu
+KvOeeZB1_70|Mai Ghare Rowat Hoihe|Pawan Singh
+DG8F-csoRAQ|Pahile Pahil Chhathi Maiya|Sharda Sinha
+epQB_o53AX8|Patna Se Nimbua Mangaini|Anu Dubey
+Yz1XBzbaSoM|Jai Chhathi Maiya|Sonu Nigam & Pawan Singh
+OERYH8EC1hA|Chhathi Maiya Ke Geet|Anu Dubey
+jRsXRee52xw|Marbo Re Sugwa Dhanukh Se|Anuradha Paudwal
+cQ2eX4SrkNg|Pahile Pahile Baani Kaile Chhathi Maiya|Dinesh Lal Yadav & Kalpana
+JXnbpAY3igM|Makeup Ke Phera Aragh Ke Bera|Khesari Lal Yadav
+TofF3Mhcyw8|Ugi Hai Suraj Dev Na|Ranjana Singh
+8MzoVsjL4QU|Uga Hai Suraj Dev (Full Video)|Anuradha Paudwal
+fOVGz9WFymU|Ho Deenanath (Surujdev Ke Arghiya)|Sharda Sinha
+zaUyuCUTbyA|Paramparik Chhath Geet|Pawan Singh
+KWvgJvM2zT0|Ho Deenanath (New Version)|Sharda Sinha
+YVrZBmI9_ag|Kopi Kopi Boleli|Devi
+WsvuH5QO23I|Kelwa Ke Paat Par|Devi
+6diXoexNQ58|Chhathi Mai Ke Ghatwa Pe Aajan Bajan|Pawan Singh
+0O9a3mUYgGs|Aalha Chhathi Maiya Ke|Sanjo Baghel
+BktbNj2TzPs|Kopi Kopi Boleli Chhathi Maiya|Anu Dubey
+wRu4qHaLNB0|Marbo Re Sugwa Dhanush Se|Anupama Das
+j74EcjyN1WQ|Ho Deenanath|Sharda Sinha
+g1NWZxlE8n8|Dihlu Na Ekogo Lalanwa|Awadhesh Premi Yadav
+-mpGoG0nWPo|Kelwa Ke Paat Par (Original)|Sharda Sinha
+qPPhTg0WBMw|Kaanch Hi Baans Ke Bahangiya (Lachkat Jaye)|Akshara Singh
+4JdNlcumkoM|Piyari Pahir La|Pawan Singh
+G7bD1QSIxtM|Babua Je Rahte Mai|Pawan Singh
+IKAJdLAviYw|Ghutti Bhar Mor Dhoti Bhije|Khesari Lal Yadav
+SWCcS09lV7w|Oriye Oriye Madhu Chuwe|Pawan Singh
+G3PMFpftpbg|Jode Jode Supwa Tora Chadaibo|Kalpana Patowary
+uWtMR3iQT-I|Kerwa Ke Patwa Pe Newta|Pawan Singh
+z3TKq9LVbzM|Ugi Suruj Dev|Pawan Singh
+j9G3caThH98|Uthau Suruj Bhaile Bihaan|Sharda Sinha
+WlMzDuy1dy8|Bhail Arghiya Ke Ber|Arvind Akela Kallu
+L8gGSPzxXQU|Surya Chalisa|Anuradha Paudwal
+FGQ0SCK1AtE|Ugi He Dinanath|Kalpana Patowary
+9hwAiJ4fzog|Koshiya Bharaye Lagal|Neelkamal Singh
+MEnyozGodAU|Baanjhi Kewdwa Dhaile Thaadh|Sharda Sinha
+F9uURnkc8iA|Om Jai Surya Bhagwan|Anuradha Paudwal
+Muo5s8gMAcI|Sawa Lakh Ke Sari|Anu Dubey
+8BfbY0vb7Ro|Aahe Aaditmal|Karina Pandey
+_16_cy74D-c|Mathe Daura Uthai Ke|Pawan Singh
+TZC1_Og2Pm0|Aso Chhath Karab Naihar Mein|Ankush Raja
+JG-qK3vgI_o|Ugi He Dinanath (2026)|Kalpana Patowary
+k8Cmfe5HsF8|Army Lover Pa Kripa Kadi Chhathi Maiya|Tuntun Yadav
+MoAnLhiZbyk|Chhath Pooja Geet|Anjali Bhardwaj
+V4_ZiIi68L0|Yug Yug Rakhih Suhag He Chhathi Maiya|Kalpana Patowary
+8dNjbCHaGEc|Kaanch Hi Baans Ke Bahangiya (New Version)|Anuradha Paudwal
+2RR-GcqTfhU|Uga Hey Surujdev|Kalpana Patowary
+38mTaX7LkgY|Chala Ganga Kinare|Khesari Lal Yadav
+yt_8_NaCWGk|Hathjoriya Nu Ho|Pawan Singh
+B90gprL5XBE|Ugi He Suryamal Naiyo Na Dole|Pawan Singh
+2Uh-rMxhBLY|Jode Jode Falwa Suruj Dev|Swati Mishra
+OCev72he8tU|Ghare Ghare Hota Chhathi Maai Ke Varatiya|Aamrapali Dubey
+Dd_KAUMoKbY|Dhaniya Hamar Naya Baari|Pawan Singh
+x9_3sARy_Kw|Hey Chhathi Maiya|Sharda Sinha
+px11PiCUUy8|Ugi Hey Dinanath|Swati Mishra
+OrlnX9zM5-k|Chhathi Maiya Bulaye|Vishal Mishra
+Eb1W8pX0to0|Chanani Taane Chalale|Devi
+KQqoli_tVVY|Dukhwa Mitayin Chhathi Maiya|Sharda Sinha
+Pk3cYw5Wonw|Chhathi Maiya Deda Ego Lalna|Kalpana Patowary
+G9eSufgjenI|Koshiya Bharaye Lagal (Video)|Neelkamal Singh
+FPDKM5NidYM|Kawna Kalamwa Se Likhla Karamwa|Pawan Singh & Priyanka Singh
+VkYrntXiEX8|Patna Ke Ghatva Par Baaje|Sharda Sinha
+G9yiA2WyWFU|Bhauji Koshi Bhar|Sonu Nigam & Pawan Singh
+9Jmeu2P4YUc|Gajmoti Chouka Puraile|Sharda Sinha
+88gxIb2WTkQ|Suryadev Amritwani|Surya Upasana
+G7POso3jDdw|Jode Jode Nariyar|Devi
+VJq6aMPw9W4|Chala Patna Ke Ghat|Pawan Singh
+VN0-C_22y4s|Kerawa Ke Paat Par|Maithili Thakur
+wD4ptJDaa8c|Chhathi Maiya|Akshara Singh
+JcCjw_P_gaM|Kartik Maas Ijoriya|Sharda Sinha
+Wy5fYjIYivs|Marbo Re Sugwa Dhanush Se (Kalpana)|Kalpana Patowary
+treeRGhGMMc|Kanch Hi Bans Ke Bahangiya|Swati Mishra
+AP3G513ok-Y|Shitali Bayariya|Pawan Singh
+yZD_iTghSZw|Saat Hi Godawa Surajdev Lihlan Avatar|Chhath Lok Geet
+jCGKK7GNnjA|Suraj Ke Rath Maiyya|Sharda Sinha
+0fZt65tj6L8|Kanch Hi Bans Ke Bahangiya|Devi
+T_YXL_blE3A|Darshan Dekhai Dihi|Kalpana Patowary
+B-JSzoDdDDI|Chanani Tanaye Lagal|Shilpi Raj
+FCRb4kjnRx4|Chhathi Maiya|Vishal Mishra
+vSJO-AElAog|Ugi Hey Dinanath|Maithili Thakur
+bRBxsGyZbE4|Ugi Hey Dinanath (Video)|Swati Mishra
+er0EO-Zp904|Asiya Puran Hoy|Kavita Paudwal
+fwX2g9jjo1o|Sona Satkuniya Ho Dinanaath|Maithili Thakur
+-1OD63Ew74s|Ayelaiy Chhathi Ke Tyohar|Anuradha Paudwal
+fqlh99htTJA|Aragh Ke Ber|Anuradha Paudwal
+Li8bbUM9bqI|Sona Surujdev|Maithili Thakur
+cw-XHS59-4o|Chhathi Mai Ke Sundar Geet|Mohan Rathore
+2U62qm2m08k|Chhathi Maiya Duariya Baanswadiya|Chaiti Chhath Geet
+V6IsHHUMxIA|Ganga Mai Ke Unchi Arariya|Manish Kumar
+TdvyD_8oPYU|Daura Ghat Pahuchai|Laxmi Rani
+LyGrpY4rvgA|Katik Chhath Paramparik Geet|Khesari Lal Yadav
+7OcvNqVQwSo|Angna Me Koshi Bharwaib|Alam Raj
+sBuTjwJtE5A|Surya Stotra|Surya Upasana
+jqagKJs3mxg|Kaise Ke Karbu Ae Dhani|Mohan Rathore
+YIRaca3nXUc|Patna Ke Ghat Par|Chandan Tiwari
+Ps58SVi1au4|Ganga Mai Me Arghya Deb|Chandan Tiwari`;
+        var CATS = ['Paramparik Geet', 'Argh Songs', 'New Chhath Geet', 'Surya Aarti'];
+        function cat(t, a) {
+            var c = [];
+            if (/surya (chalisa|stotra)|om jai surya|amritwani/i.test(t)) c.push(3);
+            if (/\b(ug[ai]h?|uthau|deenanath|dinanath|dinanaath|arg[hi]|aragh|suruj|suraj|surya|aaditmal|suryamal)/i.test(t) && c.indexOf(3) < 0) c.push(1);
+            if (a === 'Sharda Sinha' || /paramparik|lok geet|kelwa|kerwa|kerawa|kaanch|kanch|pahile pahil|marbo|jode jode/i.test(t)) c.push(0);
+            if (!c.length) c.push(2); return c
+        }
+        var S = RAW.split('\n').map(function (l) { var p = l.split('|'); return { id: p[0], t: p[1], a: p[2], c: cat(p[1], p[2]) } });
+        var FEAT = ['knZ8b5YnQiY', '6e6Hp6R5SVU', 'DG8F-csoRAQ', 'Eyq7vfxu4iA'];
+        var DAYS = [['Day 1', 'नहाय खाय', 'Nahay Khay', 'The household is purified and the vrat begins with a single sattvic meal, usually rice, chana dal and lauki, after a bath in a river or at home.'],
+        ['Day 2', 'खरना', 'Kharna', 'A day-long fast without water, broken at dusk with rasiao kheer and roti. After this, a 36-hour waterless fast begins.'],
+        ['Day 3', 'संध्या अर्घ्य', 'Sandhya Argh', 'Families walk to the ghat with baskets of thekua and fruit, and offer arghya to the setting sun while standing in the water.'],
+        ['Day 4', 'उषा अर्घ्य', 'Usha Argh', 'Arghya to the rising sun before dawn, then the fast is broken with prasad and ginger-jaggery water.']];
+        var playing = '', queue = S, PAL = ['#c2410c', '#b45309', '#9a3412', '#a16207', '#be123c', '#7c2d12'];
+        function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c] }) }
+        function row(s, i) {
+            var col = PAL[(s.id.charCodeAt(0) + i) % PAL.length];
+            return '<button class="song' + (s.id === playing ? ' now' : '') + '" data-id="' + s.id + '"><div class="thumb" style="background:' + col + '">' + (s.id === playing ? '♪' : '▶') + '</div><div><b>' + esc(s.t) + '</b><span>' + esc(s.a) + ' · ' + CATS[s.c[0]] + '</span></div></button>'
+        }
+        function dayCard(d) { return '<div class="card"><div class="day">' + d[0] + '</div><div class="hi">' + d[1] + '</div><h3>' + d[2] + '</h3><p>' + d[3] + '</p></div>' }
+        document.getElementById('daysMini').innerHTML = DAYS.map(function (d) { return dayCard([d[0], d[1], d[2], d[3].split(/[.,]/)[0] + '.']) }).join('');
+        document.getElementById('days').innerHTML = DAYS.map(dayCard).join('');
+        document.getElementById('featured').innerHTML = FEAT.map(function (id, i) { return row(S.filter(function (s) { return s.id === id })[0], i) }).join('');
+        document.getElementById('seeAll').textContent = 'See all ' + S.length + ' songs →';
+        // songs page
+        var cur = -1, chips = document.getElementById('chips'), sel = document.getElementById('artist'), q = document.getElementById('q');
+        chips.innerHTML = ['All'].concat(CATS).map(function (n, i) { return '<button class="chip' + (i === 0 ? ' on' : '') + '" data-i="' + (i - 1) + '">' + n + '</button>' }).join('');
+        chips.onclick = function (e) { if (e.target.dataset.i === undefined) return; cur = +e.target.dataset.i;[].forEach.call(chips.children, function (c) { c.classList.toggle('on', c === e.target) }); draw() };
+        var artists = {}; S.forEach(function (s) { s.a.split(/ & /).forEach(function (n) { artists[n] = (artists[n] || 0) + 1 }) });
+        sel.innerHTML = '<option value="">All artists</option>' + Object.keys(artists).sort().map(function (n) { return '<option>' + esc(n) + '</option>' }).join('');
+        var vis = [];
+        function draw() {
+            var t = q.value.toLowerCase(), a = sel.value;
+            vis = S.filter(function (s) { return (cur < 0 || s.c.indexOf(cur) >= 0) && (!a || s.a.indexOf(a) >= 0) && (!t || (s.t + ' ' + s.a).toLowerCase().indexOf(t) >= 0) });
+            document.getElementById('count').textContent = vis.length + ' of ' + S.length + ' songs. Tap any song to play it in the Player.';
+            document.getElementById('all').innerHTML = vis.map(row).join('') || '<p class="sub">No songs match.</p>'
+        }
+        q.oninput = draw; sel.onchange = draw;
+        document.getElementById('shuffle').onclick = function () { if (vis.length) { queue = vis; location.hash = '#player'; play(vis[Math.floor(Math.random() * vis.length)].id) } };
+        draw();
+        var ended = '';
+        function mandala() {
+            var o = '<svg viewBox="-200 -200 400 400" fill="none" stroke-linecap="round">', i, k = 'stroke="#7c2d12" stroke-width="1.6"';
+            o += '<circle r="197" stroke="#7c2d12" stroke-width="3"/><circle r="188" stroke="#fef08a" stroke-width="7" stroke-dasharray="1 12"/>';
+            for (i = 0; i < 24; i++)o += '<path transform="rotate(' + i * 15 + ')" d="M0-184Q11-165 0-146Q-11-165 0-184Z" fill="' + (i % 2 ? '#dc2626' : '#f97316') + '" ' + k + '/>';
+            for (i = 0; i < 12; i++)o += '<g transform="rotate(' + i * 30 + ')"><path d="M-10-124Q0-138 10-124Q0-110-10-124ZM10-124L19-133V-115Z" fill="#facc15" ' + k + '/><circle cx="-4" cy="-125" r="2" fill="#7c2d12"/></g>';
+            o += '<circle r="100" stroke="#fef08a" stroke-width="5" stroke-dasharray="2 9"/>';
+            for (i = 0; i < 16; i++)o += '<ellipse transform="rotate(' + i * 22.5 + ') translate(0 -78)" rx="9" ry="20" fill="' + (i % 2 ? '#facc15' : '#fb923c') + '" ' + k + '/>';
+            return o + '<circle r="52" fill="#dc2626" ' + k + '/><circle r="40" fill="#facc15" ' + k + '/><circle r="24" fill="#f97316" ' + k + '/><circle r="10" fill="#7f1d1d"/></svg>'
+        }
+        [].forEach.call(document.querySelectorAll('.mand'), function (m) { m.innerHTML = mandala() });
+        for (var n = 0; n < 16; n++) { var sp = document.createElement('i'); sp.className = 'sp'; sp.style.left = Math.random() * 100 + '%'; sp.style.animationDelay = Math.random() * 8 + 's'; sp.style.animationDuration = 6 + Math.random() * 6 + 's'; document.getElementById('sparks').appendChild(sp) }
+        function byId(id) { return S.filter(function (x) { return x.id === id })[0] }
+        function renderQ() { document.getElementById('ql').innerHTML = queue.map(row).join('') }
+        function play(id) {
+            var s = byId(id); if (!s) return; playing = id; ended = '';
+            var f = document.createElement('iframe'), o = location.origin === 'null' ? 'https://claude.ai' : location.origin;
+            f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1&enablejsapi=1&origin=' + encodeURIComponent(o);
+            f.referrerPolicy = 'strict-origin-when-cross-origin'; f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen'; f.allowFullscreen = true; f.title = s.t;
+            f.onload = function () { [0, 800, 2500].forEach(function (d) { setTimeout(function () { try { var w = f.contentWindow; w.postMessage(JSON.stringify({ event: 'listening', id: 1, channel: 'widget' }), '*'); w.postMessage(JSON.stringify({ event: 'command', func: 'addEventListener', args: ['onStateChange'], id: 1, channel: 'widget' }), '*') } catch (x) { } }, d) }) };
+            var fb = document.getElementById('frameBox'); fb.innerHTML = ''; fb.appendChild(f);
+            document.getElementById('stage').classList.add('live');
+            document.getElementById('pt').textContent = s.t; document.getElementById('pa').textContent = '· ' + s.a;
+            document.getElementById('yt').href = 'https://www.youtube.com/watch?v=' + id;
+            draw(); renderQ(); document.getElementById('featured').innerHTML = FEAT.map(function (f, i) { return row(byId(f), i) }).join('')
+        }
+        function step(d) { var i = queue.findIndex(function (x) { return x.id === playing }); if (queue.length) play(queue[(i + d + queue.length) % queue.length].id) }
+        window.addEventListener('message', function (e) {
+            if (!/youtube/.test(e.origin)) return; var d; try { d = typeof e.data === 'string' ? JSON.parse(e.data) : e.data } catch (x) { return }
+            if (!d) return; if ((d.event === 'onStateChange' && d.info === 0) || (d.event === 'infoDelivery' && d.info && d.info.playerState === 0)) { if (playing && ended !== playing) { ended = playing; if (document.getElementById('auto').checked) step(1) } }
+        });
+        document.addEventListener('click', function (e) {
+            var b = e.target.closest('.song'); if (!b) return;
+            if (b.closest('#featured')) queue = FEAT.map(byId); else if (b.closest('#all')) queue = vis;
+            if (location.hash !== '#player') location.hash = '#player'; play(b.dataset.id)
+        });
+        document.getElementById('prev').onclick = function () { step(-1) }; document.getElementById('next').onclick = function () { step(1) };
+        document.getElementById('playAll').onclick = function () { queue = S; play(S[0].id) };
+        // router
+        function route() {
+            var h = (location.hash || '#home').slice(1); if (!document.getElementById(h)) h = 'home';
+            [].forEach.call(document.querySelectorAll('.page'), function (p) { p.classList.toggle('on', p.id === h) });
+            [].forEach.call(document.querySelectorAll('#nav a'), function (a) { a.classList.toggle('on', a.getAttribute('href') === '#' + h) });
+            if (h === 'player') renderQ(); window.scrollTo(0, 0)
+        }
+        window.addEventListener('hashchange', route); route();
+    </script>
+</body>
+
+</html>
